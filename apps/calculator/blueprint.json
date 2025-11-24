@@ -1,0 +1,17 @@
+{
+  "name": "Calculator",
+  "entry": "morphDeck/window",
+  "props": { "title": "Calculator v0.1" },
+  "children": [
+    {
+      "use": "morphDeck/button",
+      "label": "7",
+      "emit": 7
+    },
+    {
+      "use": "morphDeck/button",
+      "label": "8",
+      "emit": 8
+    }
+  ]
+}
