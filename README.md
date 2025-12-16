@@ -1,7 +1,6 @@
+# ALL-MIND
 
-# NODE HUB
-
-### The Runtime Backbone of NODE | OS
+### The CENTRAL-APPLICATION SOURCE of NODE | OS
 
 *Logic Streaming Infrastructure for the Web*
 
@@ -10,7 +9,7 @@
 ## Executive Summary
 
 **NODE | OS** is a web-native operating system that streams **logic**, not software bundles.
-**NODE HUB** is its execution backbone.
+**ALL-MIND** is its execution backbone.
 
 Together with **XENO**, they form a deterministic pipeline that allows applications to run with:
 
@@ -36,7 +35,7 @@ User Device (Browser / Edge)
 ├── XenoFrame (Client Adapter)
 │   └── Builds & sends Imprints
 │
-└── NODE HUB (Remote Runtime)
+└── ALL-MIND (Remote Runtime)
     ├── Imprint Gate
     ├── XENO Matrix
     ├── Phase Engine
@@ -59,22 +58,22 @@ NODE | OS does not manage files or processes — it manages **intent resolution*
 
 ---
 
-### NODE HUB
+### ALL-MIND
 
-NODE HUB is a **centralized logic execution service** that:
+ALL-MIND is a **centralized logic execution service** that:
 
 * Receives structured intent (Imprints)
 * Resolves logic deterministically via XENO
 * Returns results as Exoprints
 * Emits a complete phase log for observability
 
-NODE HUB is **read-only** from the client’s perspective and does not persist user state unless explicitly configured.
+ALL-MIND is **read-only** from the client’s perspective and does not persist user state unless explicitly configured.
 
 ---
 
 ### XENO
 
-XENO is the **symbolic logic engine** inside NODE HUB.
+XENO is the **symbolic logic engine** inside ALL-MIND.
 
 It operates on:
 
@@ -159,8 +158,8 @@ Polygon defines **structure**, not style.
 ```
 1. User interacts with Skin
 2. Skin emits Imprint
-3. XenoFrame sends Imprint to NODE HUB
-4. HUB validates intent
+3. XenoFrame sends Imprint to ALL-MIND
+4. ALL-MIND validates intent
 5. XENO resolves logic
 6. Exoprint is generated
 7. Exoprint streams back to Skin
@@ -199,9 +198,9 @@ This drastically reduces:
 
 ## Business Model — VAPOR
 
-### VAPOR: Logic Streaming as a Service
+### Phase 1: VAPOR - Software Streaming Hub for NODE|OS
 
-**VAPOR** is the commercial layer built on NODE HUB.
+**VAPOR** is the commercial layer built on ALL-MIND.
 
 It is the **distribution platform** for streamed logic.
 
@@ -209,7 +208,7 @@ It is the **distribution platform** for streamed logic.
 
 ### What VAPOR Provides
 
-* Hosted NODE HUB infrastructure
+* Hosted ALL-MIND infrastructure
 * App routing & execution
 * Usage metering
 * Performance guarantees
@@ -235,6 +234,12 @@ Think:
 
 ---
 
+### Phase 2: All Mind Extension SWARM: Machine Syncing Distributed Intelligence from Logic Streams
+
+This phase expands VAPOR into a decentralized swarm intelligence model, enabling machine-synced distributed intelligence derived from logic streams. It allows for collaborative, scalable execution across nodes, enhancing global intent resolution through synchronized, distributed logic processing.
+
+---
+
 ### Revenue Streams
 
 #### 1. Compute Usage
@@ -257,7 +262,7 @@ Developers publish apps to VAPOR:
 
 Organizations deploy:
 
-* Private NODE HUB instances
+* Private ALL-MIND instances
 * On-prem or cloud
 * Regulated environments
 
@@ -309,7 +314,7 @@ Exactly like:
 
 * SDK for Skin + XenoFrame
 * App marketplace (VAPOR)
-* Multi-tenant NODE HUB
+* Multi-tenant ALL-MIND
 * Enterprise deployments
 * AI and edge integration
 
@@ -318,7 +323,7 @@ Exactly like:
 ## Final Statement
 
 NODE | OS is not a framework.
-NODE HUB is not a backend.
+ALL-MIND is not a backend.
 XENO is not a library.
 
 Together, they form a **new execution model for the web** — one where:
@@ -326,5 +331,3 @@ Together, they form a **new execution model for the web** — one where:
 > **Logic is streamed.
 > Devices render.
 > Intent is the only local asset.**
-
-
