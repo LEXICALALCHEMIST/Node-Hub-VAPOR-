@@ -22,6 +22,6 @@ app.get('/polygon', (req, res) => {
   res.sendFile(join(__dirname, 'public', 'POLYGON', 'polygon.css'));
 });
 
-app.listen(3001, () => {
-  console.log("YOUR HUB IS LIVE → http://localhost:3001/apps/calculator/calculator_os.js");
+app.listen(3000, () => {
+  console.log("YOUR ALL-MIND HUB IS LIVE → http://localhost:3000/apps/calculator/calculator_os.js");
 });

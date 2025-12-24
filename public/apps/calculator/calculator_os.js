@@ -97,13 +97,12 @@ const updatePreview = () => {
     full: `${a} ${op} ${b}`
   });
 };  // Inside the calculate handler — right before the matrix call
-// CALCULATE button — finalizes imprint
-// CALCULATE button
 const calculateBtn = document.createElement('button');
 calculateBtn.className = 'polygon_btn';
 calculateBtn.textContent = 'CALCULATE';
 calculateBtn.style.marginTop = '40px';
-calculateBtn.onclick = async () => {
+
+calculateBtn.onclick = () => {
   console.log('XENOFRAME - ADAPTER - MELT');
 
   const imprint = {
@@ -117,16 +116,25 @@ calculateBtn.onclick = async () => {
 
   console.log('FINAL IMPRINT FORGED:', imprint);
 
-  try {
-    const exoprint = await window.xenoMatrix.initialize("calculator", imprint); // if using modified initialize;
-    console.log('EXOPRINT RECEIVED FROM XENO:', exoprint);
-    preview.textContent = `Result: ${exoprint.value}`;
-  } catch (err) {
-    console.error('XENO REJECT:', err);
-    preview.textContent = 'ERROR';
-  }
+  // ONLY DISPATCH — matrix is listening via event
+  document.dispatchEvent(new CustomEvent('imprint', { detail: imprint }));
 };
 
+// === ADD THIS LISTENER ONCE (outside the function, at bottom of file) ===
+document.addEventListener('exoprint', (e) => {
+  const exoprint = e.detail;
+  console.log('EXOPRINT RECEIVED FROM XENO:', exoprint);
+
+  // Update UI with real result
+  const preview = document.querySelector('.exoprint_preview');
+  if (preview) {
+    if (exoprint.value !== null && exoprint.value !== undefined) {
+      preview.textContent = `Result: ${exoprint.value}`;
+    } else {
+      preview.textContent = 'Result: ERROR (invalid computation)';
+    }
+  }
+});
 card.appendChild(calculateBtn);
 
 // Forge the imprint (identical shape to CalcAdd13)
@@ -149,7 +157,7 @@ intentSelect.addEventListener('change', updatePreview);
 updatePreview();
 
   // Polygon summon
-  fetch('http://localhost:3001/POLYGON/polygon.css')
+  fetch('http://localhost:3000/POLYGON/polygon.css')
     .then(r => r.text())
     .then(css => {
       const style = document.createElement('style');
