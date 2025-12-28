@@ -74,7 +74,7 @@ STANDARD UI COMPONENTS FOR ALL APPS REQUIRED */
   box-sizing: border-box;
   margin: 0 auto; /* centers horizontally */
   left: 50%;
-  opacity: 90%;
+ 
   transform: translateX(-50%); /* perfect centering */
 }
  

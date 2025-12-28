@@ -1,6 +1,8 @@
-// ALL-MIND/public/NAXUS/skins/components.js — Styled dropdown IntentSelect
+// ALL-MIND/public/NAXUS/skins/components.js — Dropdown with change callback
 
-export function IntentSelect() {
+import { updateWire } from '../calculator/xenoFrame.js';  // Import updateWire
+
+export function IntentSelect(initialValue = 'add') {
   const wrapper = document.createElement('div');
   wrapper.style.cssText = 'width:100%;text-align:center;margin-top:40px;';
 
@@ -49,8 +51,13 @@ export function IntentSelect() {
     const option = document.createElement('option');
     option.value = op.value;
     option.textContent = op.text;
-    option.style.cssText = 'background:#000; color:aqua; font-size:1.4rem; padding:10px;';
+    if (op.value === initialValue) option.selected = true;
     select.appendChild(option);
+  });
+
+  // CRITICAL: Update xenoFrame on change
+  select.addEventListener('change', (e) => {
+    updateWire('intent', e.target.value);
   });
 
   wrapper.appendChild(select);

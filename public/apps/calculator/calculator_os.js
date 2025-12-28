@@ -90,6 +90,7 @@ function CalculatorSkin() {
     full: `${a} ${op} ${b}`
   });
 };  // Inside the calculate handler — right before the matrix call
+
 const calculateBtn = document.createElement('button');
 calculateBtn.className = 'polygon_btn';
 calculateBtn.textContent = 'CALCULATE';
