@@ -5,6 +5,7 @@ function CalculatorSkin() {
 
   //log root merge
   console.log('%cALL-MIND: ROOT - MERGE', 'color: #b388ff; font-family: monospace; font-size: 10px;');
+  console.log('%cROOT - MERGE', 'color: #b388ff; font-family: monospace; font-size: 10px;');
   document.body.innerHTML = '';
 
   // START WITH NAX BACKGROUND - poly class

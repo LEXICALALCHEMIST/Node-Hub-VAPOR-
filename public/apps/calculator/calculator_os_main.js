@@ -5,7 +5,7 @@ import { updateWire, imprintPreview, forgeImprint } from './xenoFrame.js';
 
 function CalculatorSkin() {
   document.body.innerHTML = '';
-
+  console.log('%cXENOFRAME → FRAME TYPE : [MATH]', 'color: red; font-weight: bold; background: grey; padding: 1px 3px;');
   // NAX BACKGROUND
   const background = document.createElement('div');
   background.className = 'naxBackground';
@@ -17,16 +17,9 @@ function CalculatorSkin() {
   document.body.appendChild(card);
 
   // Title
-  const title = document.createElement('h2');
-  title.textContent = 'main';
-  title.style.cssText = `
-    color: aqua;
-    font-family: monospace;
-    font-size: 2.8rem;
-    text-shadow: 0 0 30px aqua;
-    letter-spacing: 6px;
-    margin: 0 0 40px;
-  `;
+  const title = document.createElement('div');
+  title.textContent = 'App: Calculator';
+  title.className = 'naxTitle';
   card.appendChild(title);
 
   // Row + 2 columns
@@ -104,6 +97,18 @@ function CalculatorSkin() {
       document.head.appendChild(style);
     })
     .catch(() => {});
+
+    // Add a close button
+    const closeBtn = document.createElement('button');
+    closeBtn.textContent = '× CLOSE';
+    closeBtn.className = 'os_btn';
+    closeBtn.style.position = 'absolute';
+    closeBtn.style.top = '60px';
+    closeBtn.style.right = '20px';
+    closeBtn.addEventListener('click', () => {
+      window.killApp();  // Kills current app, returns to VaporView
+    });
+    card.appendChild(closeBtn);
 }
 
 // Expose for reactor

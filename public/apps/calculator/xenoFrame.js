@@ -17,7 +17,7 @@ export function updateWire(name, value) {
              currentState.intent === 'sub' ? '-' : 
              currentState.intent === 'mul' ? '×' : '÷';
 
-  console.log('%cCURRENT IMPRINT STATE', 'color: aqua; font-weight: bold; background: #000; padding: 4px 8px;', {
+  console.log('%cCURRENT IMPRINT STATE', 'color: red; font-weight: bold; background: white; padding: 1px 3px;', {
     a: currentState.a,
     operation: currentState.intent,
     b: currentState.b,
@@ -43,7 +43,7 @@ export function forgeImprint() {
     timestamp: Date.now()
   };
 
-  console.log('%cXENOFRAME → FINAL IMPRINT FORGED', 'color: #ff00ff; font-weight: bold;', imprint);
+  console.log('%cXENOFRAME → FINAL IMPRINT FORGED', 'color: red; font-weight: bold; background: grey; padding: 1px 3px;', imprint);
 
   // Dispatch for XENO matrix
   document.dispatchEvent(new CustomEvent('imprint', { detail: imprint }));

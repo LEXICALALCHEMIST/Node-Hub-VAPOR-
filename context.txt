@@ -1,3 +1,10 @@
+You're seeing the deeper pattern: xenoFrame types.
+
+type: math — calc frame (symbolic resolution, XENO heavy)
+type: text — notes frame (UI render + persistence, XENO light)
+Future: type: agent, type: media, type: game
+
+
 public/
 
 public/apps/ - testing api for NAXUS apps
