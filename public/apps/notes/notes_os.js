@@ -1,59 +1,75 @@
-// src/apps/notes/notes_os.js — Notes app with XENO frame + forge button
+// src/apps/notes/notes_os.js — Notes app with safe container injection
 
 import { updateNote, forgeTextImprint } from './xenoFrameNote.js';
 import { save } from '../../DataDragon/dataDragon.js';
 
 window.NotesSkin = function () {
+  const root = document.getElementById('root');
+  if (!root) {
+    console.error('FATAL: #root not found');
+    return;
+  }
 
-  document.body.innerHTML = '';
+  // Clear only inside #root
+  root.innerHTML = '';
+
+  // Main container — all skin content goes here
+  const container = document.createElement('div');
+  container.className = 'naxContainer';
 
   // NAX BACKGROUND
   const background = document.createElement('div');
   background.className = 'naxBackground';
-  document.body.appendChild(background);
+  container.appendChild(background);
 
   // Main card
   const card = document.createElement('div');
   card.className = 'card_medium';
-  card.style.cssText = 'max-width: 900px; margin: 40px auto; padding: 40px;';
+  container.appendChild(card);
 
   // Title
   const title = document.createElement('div');
   title.textContent = 'NOTE PAD';
   title.className = 'naxTitle';
-  card.appendChild(title);
+  root.appendChild(title);
 
   // Large textarea
   const textarea = document.createElement('textarea');
   textarea.className = 'naxTextInput';
   textarea.placeholder = 'Begin your note...';
-  textarea.addEventListener('input', (e) => {
-    updateNote('content', e.target.value);
-  });
+  textarea.addEventListener('input', (e) => updateNote('content', e.target.value));
   card.appendChild(textarea);
 
-  // FORGE IMPRINT button — logs final imprint once
-  // SAVE button — forges imprint and prepares for DataDragon
+  // SAVE button
   const saveBtn = document.createElement('button');
   saveBtn.textContent = 'SAVE';
   saveBtn.className = 'os_btn';
-  saveBtn.style.cssText = 'margin-top: 40px; font-size: 1.2rem; padding: 12px 30px;';
-
+  saveBtn.style.cssText = 'margin-top: 30px; font-size: 1.2rem; padding: 12px 10px;';
   saveBtn.addEventListener('click', () => {
-    const finalImprint = forgeTextImprint();  // From xenoFrame
-
-    console.log('%cSAVE → IMPRINT FORGED (ready for DataDragon)', 'color: #ff00ff; font-weight: bold; background: #000; padding: 8px 16px; border-radius: 8px;', finalImprint);
-
-    // Future: pass to DataDragon
-     save(finalImprint);
+    const imprint = forgeTextImprint();
+    save(imprint);
   });
-
   card.appendChild(saveBtn);
-  
 
-  document.body.appendChild(card);
+  // CLOSE button — fixed, high z-index
+  const closeBtn = document.createElement('button');
+  closeBtn.textContent = '× CLOSE';
+  closeBtn.className = 'os_btn';
+  closeBtn.style.cssText = `
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99999;
+    font-size: 1.4rem;
+    padding: 8px 16px;
+  `;
+  closeBtn.addEventListener('click', () => window.killApp());
+  container.appendChild(closeBtn);
 
-  // POLYGON SUMMON
+  // Inject container into root
+  root.appendChild(container);
+
+    // POLYGON SUMMON
   fetch('http://localhost:3000/POLYGON/polygon.css')
     .then(r => r.text())
     .then(css => {
